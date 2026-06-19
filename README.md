@@ -1,6 +1,17 @@
 # 🏨 GoTell — Smart Hotel Management System
 
-![Header](assets/header.svg)
+<div align="center">
+
+<img src="assets/gotell-banner.svg" alt="GoTell Smart Hotel Management System Banner" width="100%"/>
+
+<br/><br/>
+
+![C++](https://img.shields.io/badge/Language-C++-00599C?style=for-the-badge&logo=cplusplus&logoColor=white)
+![Console App](https://img.shields.io/badge/Type-Console%20App-orange?style=for-the-badge)
+![Role Based](https://img.shields.io/badge/Login-Role%20Based-0ea5e9?style=for-the-badge)
+![Status](https://img.shields.io/badge/Status-Development-success?style=for-the-badge)
+
+</div>
 
 GoTell adalah aplikasi manajemen hotel berbasis **console (CLI)** yang dibuat menggunakan **C++**. Aplikasi ini mensimulasikan tiga peran utama dalam operasional hotel: **Manager**, **Resepsionis**, dan **Housekeeping**, lengkap dengan navigasi menu interaktif menggunakan tombol panah (↑ / ↓ / Enter), sistem check-in/check-out, layanan tambahan, dan pembayaran via **Tunai** atau **QRIS**.
 
@@ -9,6 +20,7 @@ GoTell adalah aplikasi manajemen hotel berbasis **console (CLI)** yang dibuat me
 ## 📌 Daftar Isi
 - [Tentang Proyek](#-tentang-proyek)
 - [Fitur Utama](#-fitur-utama)
+- [Tampilan Program](#️-tampilan-program)
 - [Konsep C++ yang Digunakan](#-konsep-c-yang-digunakan)
 - [Struktur Data yang Di-set di Program](#-struktur-data-yang-di-set-di-program)
 - [Alur Program](#-alur-program)
@@ -16,7 +28,6 @@ GoTell adalah aplikasi manajemen hotel berbasis **console (CLI)** yang dibuat me
 - [Library yang Digunakan](#-library-yang-digunakan)
 - [Rumus Perhitungan](#-rumus-perhitungan)
 - [Pembagian Tugas Tim (7 Anggota)](#-pembagian-tugas-tim-7-anggota)
-- [Galeri / Screenshot](#-galeri--screenshot)
 
 ---
 
@@ -41,6 +52,82 @@ Fitur tambahan:
 - Tabel (daftar kamar tersedia & daftar layanan) diberi indentasi rata dengan input pengguna serta baris kosong pemisah agar tampilan lebih rapi.
 
 > Catatan: Program ini memakai `<conio.h>` dan `system("cls")`, jadi paling aman dijalankan di Windows. Untuk Linux/Mac, perlu penyesuaian pada bagian input tombol dan clear screen.
+
+---
+
+## 🖼️ Tampilan Program
+
+Gambar di bawah ini adalah **mockup ilustrasi** tampilan console GoTell (dibuat sebagai gambaran awal). Disarankan untuk **mengganti gambar-gambar ini dengan screenshot asli** hasil running program kamu sendiri agar README lebih akurat — tinggal timpa file dengan nama yang sama di folder `assets/`.
+
+```text
+assets/
+│
+├── gotell-banner.svg              ← banner header repo
+├── screenshot-login.svg           ← tampilan login
+├── screenshot-dashboard-manager.svg
+├── screenshot-menu-resepsionis.svg
+├── screenshot-checkin.svg
+├── screenshot-struk.svg           ← struk + QRIS
+└── screenshot-housekeeping.svg
+```
+
+### 🔐 Halaman Login
+
+<div align="center">
+  <img src="assets/screenshot-login.svg" alt="Halaman Login GoTell" width="80%"/>
+</div>
+
+Halaman login digunakan untuk masuk ke dalam sistem dengan maksimal 3 kali percobaan. Jika berhasil, sistem mengarahkan pengguna ke menu sesuai role.
+
+---
+
+### 👔 Dashboard Manager
+
+<div align="center">
+  <img src="assets/screenshot-dashboard-manager.svg" alt="Dashboard Manager GoTell" width="80%"/>
+</div>
+
+Menampilkan total pendapatan, jumlah transaksi selesai, progress bar okupansi, dan status seluruh kamar dalam satu layar.
+
+---
+
+### 🖥️ Menu Resepsionis
+
+<div align="center">
+  <img src="assets/screenshot-menu-resepsionis.svg" alt="Menu Resepsionis GoTell" width="80%"/>
+</div>
+
+Menu navigasi resepsionis dengan kotak menu yang bisa dipilih menggunakan tombol panah.
+
+---
+
+### 📥 Proses Check-in
+
+<div align="center">
+  <img src="assets/screenshot-checkin.svg" alt="Proses Check-in GoTell" width="80%"/>
+</div>
+
+Menampilkan daftar kamar kosong, input data tamu, hingga animasi loading saat check-in diproses.
+
+---
+
+### 🧾 Struk & Pembayaran QRIS
+
+<div align="center">
+  <img src="assets/screenshot-struk.svg" alt="Struk dan QRIS GoTell" width="80%"/>
+</div>
+
+Rincian struk (kamar, layanan, pajak, service charge) beserta simulasi tampilan QRIS saat checkout.
+
+---
+
+### 🧹 Menu Housekeeping
+
+<div align="center">
+  <img src="assets/screenshot-housekeeping.svg" alt="Menu Housekeeping GoTell" width="80%"/>
+</div>
+
+Daftar kamar yang perlu dibersihkan beserta menu aksi housekeeping (cleaning, maintenance).
 
 ---
 
@@ -69,7 +156,7 @@ Data berikut sudah di-*hardcode* (inisialisasi) di dalam program lewat fungsi `i
 ### Daftar Akun (5 user)
 | Username | Password | Nama | Role |
 |----------|----------|------|------|
-| manager | manager123 | Iqbal | Manager |
+| manager | manager123 | Iqbal Ganteng | Manager |
 | resep1 | resep123 | Adji | Resepsionis |
 | resep2 | resep456 | Zhyla | Resepsionis |
 | hk1 | hk123 | Nurra | Housekeeping |
@@ -157,13 +244,6 @@ g++ -std=c++17 -o GoTell.exe GoTell.cpp
 GoTell.exe
 ```
 
-Jika nama file berbeda, sesuaikan bagian `GoTell.cpp` dengan nama file program kamu, misalnya:
-
-```bash
-g++ -std=c++17 -o GoTell.exe main.cpp
-GoTell.exe
-```
-
 > Untuk Linux/Mac, program perlu disesuaikan terlebih dahulu karena `<conio.h>` bukan library standar di sistem tersebut.
 
 ---
@@ -182,15 +262,11 @@ GoTell.exe
 | `<chrono>` | Mengatur durasi jeda animasi loading | Opsional |
 | `<conio.h>` | Membaca tombol panah dan Enter tanpa perlu menekan Enter (`getch()`) | Wajib untuk menu interaktif Windows |
 
-`<thread>` dan `<chrono>` bisa dihapus jika animasi loading tidak memakai delay. Library lain sebaiknya tetap digunakan agar program stabil dan mudah dijalankan di compiler berbeda.
-
 ---
 
 ## 🧮 Rumus Perhitungan
 
 ### Total Pembayaran
-
-Program menghitung total pembayaran dengan rumus:
 
 ```text
 subtotal = biaya kamar + total layanan
@@ -201,76 +277,37 @@ grand total = subtotal + pajak + service charge
 
 ### Okupansi Kamar
 
-Tingkat okupansi dihitung dari jumlah kamar yang sedang berstatus **Terisi** dibandingkan dengan total kamar:
-
 ```text
 okupansi = jumlah kamar terisi / total kamar × 100%
 ```
 
-Progress bar okupansi memakai simbol blok seperti `█` untuk bagian terisi dan `░` untuk bagian kosong, sehingga tampilannya lebih rapi dibandingkan simbol `#`.
+Progress bar okupansi memakai simbol blok seperti `█` untuk bagian terisi dan `░` untuk bagian kosong.
 
 ---
 
 ## 👥 Pembagian Tugas Tim (7 Anggota)
 
-Pembagian ini dibuat seolah-olah tim merakit ulang aplikasi ini dari nol (modul per modul), supaya tiap anggota benar-benar memahami dan bisa mempertanggungjawabkan bagiannya saat presentasi/demo.
-
 | # | Anggota | Modul / Tanggung Jawab | Fungsi/Bagian Terkait |
 |---|---------|--------------------------|-------------------------|
-| 1 | **Iqbal Ganteng — Project Lead & Core Data Structures** | Merancang seluruh `struct` (Kamar, Tamu, Layanan, Transaksi, User), deklarasi array global & konstanta (MAX_*, PAJAK, SERVICE_CHARGE), serta menyatukan (merge) seluruh modul dari anggota lain di tahap akhir. | `struct Kamar/Tamu/Layanan/Transaksi/User`, deklarasi array & konstanta, `main()` |
-
-| 2 | **Zhyla — Input/Output & Util Dasar** | Membuat fungsi pembacaan input yang aman (validasi & anti-EOF crash), fungsi util format (rupiah, tanggal, ID transaksi), dan fungsi layar (clear screen, garis pembatas). | `bacaTeks()`, `bacaAngka()`, `cekEOF()`, `clearScreen()`, `formatRupiah()`, `tanggalSekarang()`, `buatID()`, `garis()` |
-
-| 3 | **Adji — UI Navigasi (Menu Interaktif)** | Membangun sistem navigasi tombol panah ATAS/BAWAH/ENTER menggunakan `getch()`, kotak menu otomatis, dan banner ASCII art GoTell. | `bacaTombolArah()`, `kotakMenu()`, `hitungLebarKotak()`, `pilihMenuKotak()`, `tampilkanBanner()`, `tungguTombol()`, `animasiLoading()` |
-
-| 4 | **Nurra — Modul Data Master & Pencarian (Pointer)** | Mengisi data awal kamar/user/layanan (`inisialisasi...`), dan membuat seluruh fungsi pencarian berbasis pointer agar data bisa diubah langsung dari fungsi lain. | `tambahKamar()`, `inisialisasiKamar()`, `tambahUser()`, `inisialisasiUser()`, `tambahLayanan()`, `inisialisasiLayanan()`, `cariKamar()`, `cariUser()`, `cariTamuByKTP()`, `cariLayanan()`, `cariTransaksiAktif()`, `ambilOrTambahTamu()` |
-
-| 5 | **Wirra — Modul Resepsionis (Transaksi)** | Mengerjakan seluruh alur transaksi tamu: check-in, tambah layanan, dan check-out termasuk logika pembayaran Tunai/QRIS dan tampilan struk. | `prosesCheckIn()`, `prosesTambahLayanan()`, `prosesCheckOut()`, `cetakStruk()`, `tampilkanHeaderQRIS()`, `hitungTotalAkhir()`, `menuResepsionis()` |
-
-| 6 | **Sultan — Modul Housekeeping & Tampilan Kamar/Layanan** | Mengerjakan fitur housekeeping (set/selesai maintenance, pembersihan kamar) serta seluruh tampilan tabel kamar & layanan yang rapi (indentasi & spasi pemisah). | `prosesBersihkanKamar()`, `prosesSetMaintenance()`, `prosesSelesaiMaintenance()`, `menuHousekeeping()`, `tampilkanSemuaKamar()`, `tampilkanKamarTersedia()`, `tampilkanLayanan()`, `warnaStatusKamar()` |
-
-| 7 | **Isam — Modul Manager & Laporan/Statistik** | Mengerjakan seluruh fitur manager: dashboard pendapatan, laporan pendapatan detail, dan statistik okupansi per tipe kamar (termasuk progress bar berbasis simbol). | `tampilkanDashboard()`, `tampilkanLaporanPendapatan()`, `tampilkanOkupansi()`, `menuManager()`, `tampilkanTransaksiAktif()`, `login()` |
+| 1 | **Iqbal Ganteng — Project Lead & Core Data Structures** | Merancang seluruh `struct`, deklarasi array global & konstanta, serta menyatukan seluruh modul. | `struct Kamar/Tamu/Layanan/Transaksi/User`, deklarasi array & konstanta, `main()` |
+| 2 | **Zhyla — Input/Output & Util Dasar** | Fungsi pembacaan input aman, format rupiah/tanggal/ID transaksi, fungsi layar. | `bacaTeks()`, `bacaAngka()`, `cekEOF()`, `clearScreen()`, `formatRupiah()`, `tanggalSekarang()`, `buatID()`, `garis()` |
+| 3 | **Adji — UI Navigasi (Menu Interaktif)** | Navigasi tombol panah, kotak menu otomatis, banner ASCII art. | `bacaTombolArah()`, `kotakMenu()`, `hitungLebarKotak()`, `pilihMenuKotak()`, `tampilkanBanner()`, `tungguTombol()`, `animasiLoading()` |
+| 4 | **Nurra — Modul Data Master & Pencarian (Pointer)** | Seed data awal & fungsi pencarian berbasis pointer. | `inisialisasiKamar()`, `inisialisasiUser()`, `inisialisasiLayanan()`, `cariKamar()`, `cariUser()`, `cariTamuByKTP()`, `cariLayanan()`, `cariTransaksiAktif()`, `ambilOrTambahTamu()` |
+| 5 | **Wira — Modul Resepsionis (Transaksi)** | Alur check-in, tambah layanan, check-out, pembayaran, struk. | `prosesCheckIn()`, `prosesTambahLayanan()`, `prosesCheckOut()`, `cetakStruk()`, `tampilkanHeaderQRIS()`, `hitungTotalAkhir()`, `menuResepsionis()` |
+| 6 | **Sultan — Modul Housekeeping & Tampilan Kamar/Layanan** | Fitur housekeeping & tampilan tabel kamar/layanan. | `prosesBersihkanKamar()`, `prosesSetMaintenance()`, `prosesSelesaiMaintenance()`, `menuHousekeeping()`, `tampilkanSemuaKamar()`, `tampilkanKamarTersedia()`, `tampilkanLayanan()`, `warnaStatusKamar()` |
+| 7 | **Isam — Modul Manager & Laporan/Statistik** | Dashboard, laporan pendapatan, statistik okupansi. | `tampilkanDashboard()`, `tampilkanLaporanPendapatan()`, `tampilkanOkupansi()`, `menuManager()`, `tampilkanTransaksiAktif()`, `login()` |
 
 > 💡 Saran kerja tim: setiap anggota membuat *branch* sendiri sesuai modulnya (`feature/resepsionis`, `feature/housekeeping`, dst), lalu di-*merge* oleh Anggota 1 (Project Lead) ke `main` setelah saling review.
-
----
-
-## 🖼 Galeri / Screenshot
-
-> Tambahkan file gambar dengan nama persis seperti di bawah ini ke dalam folder `assets/` pada repository, maka gambar akan otomatis tampil di README ini.
-
-| Gambar | Keterangan | Path yang harus diisi |
-|--------|------------|--------------------------|
-| Header repo | Banner/header utama repository | `assets/header.jpg` |
-| Banner aplikasi | Tampilan ASCII art banner GoTell saat program dibuka | `assets/banner.jpg` |
-| Menu Login | Tampilan layar login | `assets/login.jpg` |
-| Menu Manager | Tampilan kotak menu Manager | `assets/menu-manager.jpg` |
-| Dashboard Manager | Tampilan dashboard pendapatan & okupansi | `assets/dashboard.jpg` |
-| Menu Resepsionis | Tampilan kotak menu Resepsionis | `assets/menu-resepsionis.jpg` |
-| Check-in | Tampilan proses check-in tamu | `assets/checkin.jpg` |
-| Tambah Layanan | Tampilan proses tambah layanan ke tamu | `assets/tambah-layanan.jpg` |
-| Struk & Metode Bayar | Tampilan struk + pilihan Tunai/QRIS | `assets/checkout-bayar.jpg` |
-| QRIS | Tampilan header & kode QRIS | `assets/qris.jpg` |
-| Menu Housekeeping | Tampilan kotak menu Housekeeping | `assets/menu-housekeeping.jpg` |
-| Statistik Okupansi | Tampilan grafik okupansi per tipe kamar | `assets/okupansi.jpg` |
-
-Contoh embed gambar di Markdown (sudah disiapkan, tinggal upload filenya):
-
-```markdown
-![Banner Aplikasi](assets/banner.jpg)
-![Menu Manager](assets/menu-manager.jpg)
-![Dashboard Manager](assets/dashboard.jpg)
-![Menu Resepsionis](assets/menu-resepsionis.jpg)
-![Check-in](assets/checkin.jpg)
-![Tambah Layanan](assets/tambah-layanan.jpg)
-![Struk & Metode Bayar](assets/checkout-bayar.jpg)
-![QRIS](assets/qris.jpg)
-![Menu Housekeeping](assets/menu-housekeeping.jpg)
-![Statistik Okupansi](assets/okupansi.jpg)
-```
 
 ---
 
 ## 📄 Lisensi
 
 Proyek ini dibuat untuk keperluan tugas/pembelajaran. Bebas dipakai dan dimodifikasi untuk keperluan edukasi.
+
+<div align="center">
+
+**GoTell : Smart Hotel Management System**
+Made with ❤️ using C++
+
+</div>

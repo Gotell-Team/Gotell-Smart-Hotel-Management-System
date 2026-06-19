@@ -1,0 +1,41 @@
+<svg width="900" height="560" viewBox="0 0 900 560" xmlns="http://www.w3.org/2000/svg" font-family="Consolas, Menlo, monospace">
+  <rect width="900" height="560" rx="12" fill="#0d1117"/>
+  <rect width="900" height="34" rx="12" fill="#1f2937"/>
+  <circle cx="24" cy="17" r="6" fill="#ff5f56"/>
+  <circle cx="46" cy="17" r="6" fill="#ffbd2e"/>
+  <circle cx="68" cy="17" r="6" fill="#27c93f"/>
+  <text x="450" y="22" fill="#9ca3af" font-size="13" text-anchor="middle">GoTell.exe — Struk &amp; Pembayaran</text>
+
+  <text x="330" y="68" fill="#facc15" font-size="16" font-weight="bold">STRUK GOTELL HOTEL</text>
+  <line x1="40" y1="80" x2="860" y2="80" stroke="#374151" stroke-width="1"/>
+
+  <text x="40" y="110" fill="#d1d5db" font-size="14">  No. Transaksi : TRX-101</text>
+  <text x="40" y="135" fill="#d1d5db" font-size="14">  Nama Tamu     : Budi Santoso</text>
+  <text x="40" y="160" fill="#d1d5db" font-size="14">  Kamar         : 201 | Lama Menginap : 2 malam</text>
+
+  <line x1="40" y1="180" x2="860" y2="180" stroke="#374151" stroke-width="1"/>
+  <text x="40" y="208" fill="#d1d5db" font-size="14">  Biaya Kamar                Rp 1.500.000</text>
+  <text x="40" y="232" fill="#d1d5db" font-size="14">  Total Layanan Tambahan     Rp 85.000</text>
+  <text x="40" y="256" fill="#d1d5db" font-size="14">  Pajak (11%)                Rp 174.350</text>
+  <text x="40" y="280" fill="#d1d5db" font-size="14">  Service Charge (5%)        Rp 79.250</text>
+  <line x1="40" y1="296" x2="860" y2="296" stroke="#374151" stroke-width="1"/>
+  <text x="40" y="324" fill="#facc15" font-size="16" font-weight="bold">  TOTAL BAYAR                Rp 1.838.600</text>
+
+  <!-- QRIS box -->
+  <g transform="translate(290,350)">
+    <rect width="320" height="180" fill="#111827" stroke="#38bdf8" stroke-width="2"/>
+    <text x="160" y="26" fill="#38bdf8" font-size="13" text-anchor="middle">SCAN QRIS PEMBAYARAN</text>
+    <g transform="translate(110,40)" fill="#ffffff">
+      <rect x="0" y="0" width="100" height="100" fill="#1f2937"/>
+      <rect x="8" y="8" width="20" height="20"/>
+      <rect x="72" y="8" width="20" height="20"/>
+      <rect x="8" y="72" width="20" height="20"/>
+      <rect x="36" y="20" width="10" height="10"/>
+      <rect x="50" y="36" width="10" height="10"/>
+      <rect x="64" y="50" width="10" height="10"/>
+      <rect x="40" y="60" width="10" height="10"/>
+      <rect x="58" y="70" width="10" height="10"/>
+    </g>
+    <text x="160" y="166" fill="#9ca3af" font-size="11" text-anchor="middle">Nominal: Rp 1.838.600</text>
+  </g>
+</svg>
