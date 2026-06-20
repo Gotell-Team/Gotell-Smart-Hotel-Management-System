@@ -8,8 +8,6 @@
 #include <chrono>     // Untuk waktu delay animasi loading
 #include <conio.h>    // Untuk getch(), tombol panah, dan pause tanpa Enter
 #include <vector>     // [BARU] Pengganti array fixed-size, ukurannya bisa berubah-ubah
-#include <fstream>    // [BARU] Untuk baca/tulis file (simpan data permanen)
-#include <algorithm>  // [BARU] Untuk std::all_of (cek apakah semua karakter angka)
 
 using namespace std;
 
@@ -35,11 +33,6 @@ const string UNGU   = "\033[35m";
 const string TEBAL  = "\033[1m";
 const string RESET  = "\033[0m";
 
-// [BARU] Lokasi file penyimpanan data
-const string FILE_KAMAR      = "data_kamar.txt";
-const string FILE_TAMU       = "data_tamu.txt";
-const string FILE_TRANSAKSI  = "data_transaksi.txt";
-const string FILE_IDBERJALAN = "data_idberjalan.txt";
 
 struct Kamar {
     string nomor;
@@ -102,12 +95,29 @@ void cekEOF() {
     }
 }
 
+// [BARU] Menghapus spasi kosong di depan dan belakang input.
+// Contoh: "  101  " akan dibaca sebagai "101".
+string trimTeks(const string &s) {
+    int awal = 0;
+    int akhir = (int) s.length() - 1;
+
+    while (awal <= akhir && (s[awal] == ' ' || s[awal] == '\t')) awal++;
+    while (akhir >= awal && (s[akhir] == ' ' || s[akhir] == '\t')) akhir--;
+
+    if (awal > akhir) return "";
+    return s.substr(awal, akhir - awal + 1);
+}
+
 string bacaTeks(const string &label, bool wajib = true) {
     string s;
     while (true) {
         cout << "  " << label << ": ";
         getline(cin, s);
         cekEOF();
+
+        s = trimTeks(s);
+
+
         if (!wajib || !s.empty()) return s;
         cout << MERAH << "  Input tidak boleh kosong!" << RESET << "\n";
     }
@@ -126,6 +136,9 @@ string bacaTeksPanjang(const string &label, int panjangMin, int panjangMax) {
         cout << "  " << label << " (" << keterangan << "): ";
         getline(cin, s);
         cekEOF();
+
+        s = trimTeks(s);
+
 
         if ((int) s.length() < panjangMin || (int) s.length() > panjangMax) {
             if (panjangMin == panjangMax) {
@@ -166,31 +179,96 @@ string bacaKTP(const string &label = "Nomor KTP") {
     }
 }
 
-// [BARU] Baca nomor HP: 9-13 digit angka (cukup fleksibel untuk berbagai format).
-string bacaNoHP(const string &label = "Nomor HP") {
+// [BARU] Validasi nama: minimal ada huruf, dan hanya boleh huruf/spasi.
+// Ini mencegah nama seperti "123", "@@@@", atau "Budi123".
+bool namaValid(const string &s) {
+    if (s.empty()) return false;
+
+    bool adaHuruf = false;
+    for (int i = 0; i < (int) s.length(); i++) {
+        char c = s[i];
+
+        if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')) {
+            adaHuruf = true;
+        } else if (c == ' ') {
+            // Spasi antar nama masih diperbolehkan.
+        } else {
+            return false;
+        }
+    }
+
+    return adaHuruf;
+}
+
+string bacaNamaTamu(const string &label = "Nama lengkap tamu") {
     string s;
     while (true) {
-        s = bacaTeksPanjang(label, 9, 13);
-        if (!semuaAngka(s)) {
-            cout << MERAH << "  Nomor HP harus berupa angka semua!" << RESET << "\n";
+        s = bacaTeks(label);
+        if (!namaValid(s)) {
+            cout << MERAH << "  Nama hanya boleh berisi huruf dan spasi!" << RESET << "\n";
             continue;
         }
         return s;
     }
 }
 
+// [BARU] Nomor HP dibuat lebih realistis: wajib angka, 9-13 digit,
+// dan diawali 08 atau 62.
+bool formatHPValid(const string &s) {
+    if (!semuaAngka(s)) return false;
+    if ((int) s.length() < 9 || (int) s.length() > 13) return false;
+
+    if (s.length() >= 2 && s.substr(0, 2) == "08") return true;
+    if (s.length() >= 2 && s.substr(0, 2) == "62") return true;
+
+    return false;
+}
+
+// [DIUBAH] Baca nomor HP: tidak cukup hanya panjangnya benar,
+// sekarang juga harus diawali 08 atau 62.
+string bacaNoHP(const string &label = "Nomor HP") {
+    string s;
+    while (true) {
+        s = bacaTeksPanjang(label, 9, 13);
+        if (!formatHPValid(s)) {
+            cout << MERAH << "  Nomor HP harus angka dan diawali 08 atau 62!" << RESET << "\n";
+            continue;
+        }
+        return s;
+    }
+}
+
+// [DIUBAH BESAR] Baca angka sekarang pakai getline + validasi string.
+// Tujuannya agar input seperti "1b", "12abc", "satu", atau "-5" tidak lolos.
 int bacaAngka(const string &label, int min = 0, int max = 999999) {
-    int x;
+    string input;
+
     while (true) {
         cout << "  " << label << ": ";
-        if (cin >> x && x >= min && x <= max) {
-            cin.ignore(10000, '\n');
-            return x;
-        }
+        getline(cin, input);
         cekEOF();
-        cin.clear();
-        cin.ignore(10000, '\n');
-        cout << MERAH << "  Masukkan angka antara " << min << " - " << max << RESET << "\n";
+
+        input = trimTeks(input);
+
+        if (!semuaAngka(input)) {
+            cout << MERAH << "  Input harus berupa angka semua!" << RESET << "\n";
+            continue;
+        }
+
+        int x;
+        try {
+            x = stoi(input);
+        } catch (...) {
+            cout << MERAH << "  Angka terlalu besar atau tidak valid!" << RESET << "\n";
+            continue;
+        }
+
+        if (x < min || x > max) {
+            cout << MERAH << "  Masukkan angka antara " << min << " - " << max << RESET << "\n";
+            continue;
+        }
+
+        return x;
     }
 }
 
@@ -424,6 +502,34 @@ void inisialisasiKamarDefault() {
     tambahKamar("402", "Presidential", 4, 4, 4500000);
 }
 
+// [BARU] Cadangan untuk menambahkan kamar default yang belum ada.
+// Status kamar lama tidak diubah, jadi data yang sedang aktif tetap aman.
+void tambahKamarDefaultJikaBelumAda(string nomor, string tipe, int lantai, int kap, double harga) {
+    if (cariKamar(nomor) == nullptr) {
+        daftarKamar.push_back({nomor, tipe, "Kosong", lantai, kap, harga});
+    }
+}
+
+// [BARU] Memastikan daftar kamar default tetap lengkap 14 kamar.
+// Fungsi ini menjadi cadangan kalau suatu saat daftar kamar diubah dari kode,
+// sehingga kamar default yang hilang bisa ditambahkan lagi tanpa duplikasi.
+void pastikanKamarDefaultLengkap() {
+    tambahKamarDefaultJikaBelumAda("101", "Standard", 1, 2, 450000);
+    tambahKamarDefaultJikaBelumAda("102", "Standard", 1, 2, 450000);
+    tambahKamarDefaultJikaBelumAda("103", "Standard", 1, 2, 450000);
+    tambahKamarDefaultJikaBelumAda("104", "Standard", 1, 3, 550000);
+    tambahKamarDefaultJikaBelumAda("105", "Standard", 1, 2, 450000);
+    tambahKamarDefaultJikaBelumAda("201", "Deluxe",   2, 2, 750000);
+    tambahKamarDefaultJikaBelumAda("202", "Deluxe",   2, 2, 750000);
+    tambahKamarDefaultJikaBelumAda("203", "Deluxe",   2, 3, 950000);
+    tambahKamarDefaultJikaBelumAda("204", "Deluxe",   2, 2, 850000);
+    tambahKamarDefaultJikaBelumAda("301", "Suite",    3, 4, 1500000);
+    tambahKamarDefaultJikaBelumAda("302", "Suite",    3, 4, 1500000);
+    tambahKamarDefaultJikaBelumAda("303", "Suite",    3, 2, 1800000);
+    tambahKamarDefaultJikaBelumAda("401", "Presidential", 4, 6, 5000000);
+    tambahKamarDefaultJikaBelumAda("402", "Presidential", 4, 4, 4500000);
+}
+
 void tambahUser(string user, string pass, string nama, string role) {
     daftarUser.push_back({user, pass, nama, role});
 }
@@ -454,187 +560,22 @@ void inisialisasiLayanan() {
 }
 
 // ============================================================
-// [BARU] BAGIAN SIMPAN & MUAT DATA DARI FILE
-// Formatnya sengaja sederhana: satu baris = satu data,
-// antar-kolom dipisah karakter '|' supaya gampang di-split lagi.
-// Tujuannya supaya data kamar/tamu/transaksi TIDAK hilang
-// setiap kali program ditutup.
+// INISIALISASI DATA AWAL TANPA FILE TXT
+// Semua data hanya disimpan selama program masih berjalan.
+// Kalau program ditutup lalu dibuka lagi, data kembali ke default.
 // ============================================================
-
-// [DIUBAH] Dulu pakai stringstream (konsep "aliran data" yang agak abstrak
-// buat pemula). Sekarang pakai cara manual: cari posisi karakter '|' satu
-// per satu pakai find(), lalu potong teksnya pakai substr().
-// Contoh: "101|Standard|Kosong" -> ["101", "Standard", "Kosong"]
-vector<string> pecahBaris(const string &baris, char pemisah = '|') {
-    vector<string> hasil;
-    string sisaTeks = baris;
-
-    while (true) {
-        int posisiPemisah = (int) sisaTeks.find(pemisah);
-
-        if (posisiPemisah == (int) string::npos) {
-            // Tidak ada '|' lagi tersisa -> sisa teks ini adalah bagian terakhir
-            hasil.push_back(sisaTeks);
-            break;
-        }
-
-        // Ambil teks dari awal sampai sebelum tanda '|'
-        string bagian = sisaTeks.substr(0, posisiPemisah);
-        hasil.push_back(bagian);
-
-        // Sisa teks yang belum diproses (setelah tanda '|')
-        sisaTeks = sisaTeks.substr(posisiPemisah + 1);
-    }
-
-    return hasil;
-}
-
-// Simpan semua data kamar ke file teks
-void simpanKamar() {
-    ofstream file(FILE_KAMAR);
-    if (!file) return;
-    for (auto &k : daftarKamar) {
-        file << k.nomor << "|" << k.tipe << "|" << k.status << "|"
-             << k.lantai << "|" << k.kapasitas << "|" << k.harga << "\n";
-    }
-}
-
-// Simpan semua data tamu ke file teks
-void simpanTamu() {
-    ofstream file(FILE_TAMU);
-    if (!file) return;
-    for (auto &t : daftarTamu) {
-        file << t.nama << "|" << t.noKTP << "|" << t.telepon << "|"
-             << t.totalMenginap << "|" << t.totalBelanja << "\n";
-    }
-}
-
-// Simpan semua data transaksi ke file teks
-void simpanTransaksi() {
-    ofstream file(FILE_TRANSAKSI);
-    if (!file) return;
-    for (auto &t : daftarTransaksi) {
-        file << t.id << "|" << t.nomorKamar << "|" << t.namaTamu << "|" << t.ktpTamu << "|"
-             << t.malam << "|" << t.hargaKamar << "|" << t.totalLayanan << "|"
-             << t.grandTotal << "|" << t.status << "|" << t.metodeBayar << "\n";
-    }
-}
-
-// Simpan nomor urut ID transaksi terakhir, supaya ID tidak bentrok
-// saat program dibuka lagi.
-void simpanIdBerjalan() {
-    ofstream file(FILE_IDBERJALAN);
-    if (!file) return;
-    file << idBerjalan << "\n";
-}
-
-// [BARU] Panggil semua fungsi simpan sekaligus. Dipanggil setiap kali
-// ada perubahan data penting (check-in, tambah layanan, check-out, dll)
-void simpanSemuaData() {
-    simpanKamar();
-    simpanTamu();
-    simpanTransaksi();
-    simpanIdBerjalan();
-}
-
-// Muat data kamar dari file. Return true kalau file ditemukan & berhasil dibaca.
-bool muatKamar() {
-    ifstream file(FILE_KAMAR);
-    if (!file) return false;
-
+void inisialisasiDataAwal() {
     daftarKamar.clear();
-    string baris;
-    while (getline(file, baris)) {
-        if (baris.empty()) continue;
-        vector<string> kol = pecahBaris(baris);
-        if (kol.size() < 6) continue; // baris rusak, lewati
-
-        Kamar k;
-        k.nomor     = kol[0];
-        k.tipe      = kol[1];
-        k.status    = kol[2];
-        k.lantai    = stoi(kol[3]);
-        k.kapasitas = stoi(kol[4]);
-        k.harga     = stod(kol[5]);
-        daftarKamar.push_back(k);
-    }
-    return true;
-}
-
-bool muatTamu() {
-    ifstream file(FILE_TAMU);
-    if (!file) return false;
-
+    daftarUser.clear();
     daftarTamu.clear();
-    string baris;
-    while (getline(file, baris)) {
-        if (baris.empty()) continue;
-        vector<string> kol = pecahBaris(baris);
-        if (kol.size() < 5) continue;
-
-        Tamu t;
-        t.nama          = kol[0];
-        t.noKTP         = kol[1];
-        t.telepon       = kol[2];
-        t.totalMenginap = stoi(kol[3]);
-        t.totalBelanja  = stod(kol[4]);
-        daftarTamu.push_back(t);
-    }
-    return true;
-}
-
-bool muatTransaksi() {
-    ifstream file(FILE_TRANSAKSI);
-    if (!file) return false;
-
+    daftarLayanan.clear();
     daftarTransaksi.clear();
-    string baris;
-    while (getline(file, baris)) {
-        if (baris.empty()) continue;
-        vector<string> kol = pecahBaris(baris);
-        if (kol.size() < 10) continue;
+    idBerjalan = 1;
 
-        Transaksi t;
-        t.id           = kol[0];
-        t.nomorKamar   = kol[1];
-        t.namaTamu     = kol[2];
-        t.ktpTamu      = kol[3];
-        t.malam        = stoi(kol[4]);
-        t.hargaKamar   = stod(kol[5]);
-        t.totalLayanan = stod(kol[6]);
-        t.grandTotal   = stod(kol[7]);
-        t.status       = kol[8];
-        t.metodeBayar  = kol[9];
-        daftarTransaksi.push_back(t);
-    }
-    return true;
-}
-
-void muatIdBerjalan() {
-    ifstream file(FILE_IDBERJALAN);
-    if (!file) return;
-    file >> idBerjalan;
-}
-
-// [BARU] Fungsi utama saat program mulai: coba muat data lama dari file.
-// Kalau file belum ada (program baru pertama kali dijalankan),
-// otomatis isi dengan data default (inisialisasi).
-void muatAtauInisialisasiData() {
-    if (!muatKamar()) {
-        inisialisasiKamarDefault();
-    }
-    muatTamu();        // kalau belum ada file, daftarTamu otomatis tetap kosong
-    muatTransaksi();   // sama seperti di atas
-    muatIdBerjalan();
-
-    // User dan layanan tetap di-set manual setiap kali program jalan,
-    // karena memang nggak diubah-ubah oleh user biasa (hanya dikonfigurasi
-    // di kode). Kalau mau dibuat dinamis juga, tinggal tambahkan
-    // simpanUser()/muatUser() dengan pola yang sama.
+    inisialisasiKamarDefault();
     inisialisasiUser();
     inisialisasiLayanan();
 }
-
 string warnaStatusKamar(const string &status) {
     if (status == "Kosong")      return HIJAU;
     if (status == "Terisi")      return MERAH;
@@ -782,6 +723,28 @@ void tampilkanTransaksiAktif() {
     if (!ada) cout << "  Tidak ada transaksi aktif saat ini.\n";
 }
 
+// [BARU] Input nomor kamar check-in dibuat mengulang sampai benar.
+// Dulu kalau salah sekali, proses langsung balik ke menu.
+Kamar* bacaKamarKosong() {
+    while (true) {
+        string nomorKamar = bacaTeks("Nomor kamar yang dipilih");
+        Kamar *kamar = cariKamar(nomorKamar);
+
+        if (kamar == nullptr) {
+            cout << MERAH << "  Kamar tidak ditemukan!" << RESET << "\n";
+            continue;
+        }
+
+        if (kamar->status != "Kosong") {
+            cout << MERAH << "  Kamar tidak tersedia! Status saat ini: "
+                 << kamar->status << RESET << "\n";
+            continue;
+        }
+
+        return kamar;
+    }
+}
+
 // ============================================================
 // [DIUBAH BESAR] prosesCheckIn()
 // Urutan validasi sekarang:
@@ -802,25 +765,22 @@ void prosesCheckIn() {
              << SOFT_LIMIT_TRANSAKSI << "). Tidak bisa check-in dulu." << RESET << "\n";
         return;
     }
-    if ((int) daftarTamu.size() >= SOFT_LIMIT_TAMU) {
-        cout << MERAH << "  Data tamu sudah mencapai batas wajar ("
-             << SOFT_LIMIT_TAMU << "). Tidak bisa check-in dulu." << RESET << "\n";
-        return;
-    }
-
     tampilkanKamarTersedia();
 
-    string nomorKamar = bacaTeks("Nomor kamar yang dipilih");
-    Kamar *kamar = cariKamar(nomorKamar);
-    if (kamar == nullptr || kamar->status != "Kosong") {
-        cout << MERAH << "  Kamar tidak ditemukan / tidak tersedia!" << RESET << "\n";
+    Kamar *kamar = bacaKamarKosong();
+
+    string nama = bacaNamaTamu();
+    string ktp  = bacaKTP();      // [DIUBAH] divalidasi 16 digit angka
+    string telp = bacaNoHP();     // [DIUBAH] divalidasi angka, 9-13 digit, awalan 08/62
+    int    malam = bacaAngka("Lama menginap (malam)", 1, 365);
+
+    // [DIUBAH] Batas tamu dicek setelah KTP diketahui.
+    // Kalau tamu lama sudah ada, ia tetap boleh check-in walaupun daftarTamu penuh.
+    if (cariTamuByKTP(ktp) == nullptr && (int) daftarTamu.size() >= SOFT_LIMIT_TAMU) {
+        cout << MERAH << "  Data tamu sudah mencapai batas wajar ("
+             << SOFT_LIMIT_TAMU << "). Tidak bisa menambah tamu baru." << RESET << "\n";
         return;
     }
-
-    string nama = bacaTeks("Nama lengkap tamu");
-    string ktp  = bacaKTP();      // [DIUBAH] dulu bacaTeks biasa, sekarang divalidasi 16 digit angka
-    string telp = bacaNoHP();     // [DIUBAH] dulu bacaTeks biasa, sekarang divalidasi 9-13 digit angka
-    int    malam = bacaAngka("Lama menginap (malam)", 1, 365);
 
     Tamu *tamu = ambilOrTambahTamu(nama, ktp, telp);
     // Tidak perlu cek nullptr lagi di sini karena vector tidak akan penuh,
@@ -845,8 +805,6 @@ void prosesCheckIn() {
 
     kamar->status = "Terisi";
     tamu->totalMenginap++;
-
-    simpanSemuaData(); // [BARU] langsung simpan ke file setelah check-in berhasil
 
     animasiLoading("Memproses check-in...");
     cout << HIJAU << "\n  Check-in berhasil! ID Transaksi: " << t.id << RESET << "\n";
@@ -878,8 +836,6 @@ void prosesTambahLayanan() {
 
     t->totalLayanan += subtotal;
     t->grandTotal = hitungTotalAkhir(t->hargaKamar, t->totalLayanan);
-
-    simpanSemuaData(); // [BARU] simpan setelah layanan ditambahkan
 
     cout << HIJAU << "  " << layanan->nama << " x" << qty
          << " ditambahkan (" << formatRupiah(subtotal) << ")" << RESET << "\n";
@@ -941,8 +897,6 @@ void prosesCheckOut() {
     Tamu *tamu = cariTamuByKTP(t->ktpTamu);
     if (tamu != nullptr) tamu->totalBelanja += t->grandTotal;
 
-    simpanSemuaData(); // [BARU] simpan setelah check-out
-
     clearScreen();
     cetakStruk(*t);
     animasiLoading("Memproses pembayaran...");
@@ -989,7 +943,6 @@ void prosesBersihkanKamar() {
         return;
     }
     kamar->status = "Kosong";
-    simpanSemuaData(); // [BARU]
     cout << HIJAU << "  Kamar " << nomor << " sekarang siap digunakan!" << RESET << "\n";
 }
 
@@ -1007,7 +960,6 @@ void prosesSetMaintenance() {
         return;
     }
     kamar->status = "Maintenance";
-    simpanSemuaData(); // [BARU]
     cout << KUNING << "  Kamar " << nomor << " sekarang dalam status Maintenance." << RESET << "\n";
 }
 
@@ -1021,7 +973,6 @@ void prosesSelesaiMaintenance() {
         return;
     }
     kamar->status = "Dibersihkan";
-    simpanSemuaData(); // [BARU]
     cout << HIJAU << "  Kamar " << nomor << " selesai diperbaiki, menunggu dibersihkan." << RESET << "\n";
 }
 
@@ -1289,10 +1240,9 @@ int menuAwal() {
 int main() {
     system("chcp 65001 > nul");
 
-    // [DIUBAH] Dulu: inisialisasiKamar(); inisialisasiUser(); inisialisasiLayanan();
-    // Sekarang: coba muat data lama dari file dulu. Kalau belum ada,
-    // baru pakai data default.
-    muatAtauInisialisasiData();
+    // Data dibuat langsung dari kode, tanpa file txt.
+    // Setiap program baru dijalankan, kamar kembali lengkap ke data default.
+    inisialisasiDataAwal();
 
     bool lanjutProgram = true;
     while (lanjutProgram) {
@@ -1336,8 +1286,6 @@ int main() {
         // di awal perulangan while di atas.
         tungguTombol();
     }
-
-    simpanSemuaData(); // [BARU] simpan terakhir kali sebelum benar-benar keluar
     tampilkanPenutup();
     return 0;
 }

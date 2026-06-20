@@ -1,4 +1,4 @@
-101|Standard|Kosong|1|2|450000
+101|Standard|Terisi|1|2|450000
 102|Standard|Kosong|1|2|450000
 103|Standard|Kosong|1|2|450000
 104|Standard|Kosong|1|3|550000
