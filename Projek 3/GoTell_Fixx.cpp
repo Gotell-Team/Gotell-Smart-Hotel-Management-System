@@ -586,7 +586,7 @@ string warnaStatusKamar(const string &status) {
 
 void tampilkanSemuaKamar() {
     clearScreen();
-    judul("DAFTAR SEMUA KAMAR");
+    judul("                 DAFTAR SEMUA KAMAR");
     cout << left << setw(6) << "No" << setw(14) << "Tipe" << setw(10) << "Lantai"
          << setw(16) << "Harga/Malam" << "Status" << "\n";
     garis(LEBAR_LAYAR);
@@ -598,7 +598,7 @@ void tampilkanSemuaKamar() {
 }
 
 void tampilkanKamarTersedia() {
-    judul("KAMAR YANG TERSEDIA (KOSONG)");
+    judul("              KAMAR YANG TERSEDIA (KOSONG)");
     cout << "  " << left << setw(6) << "No" << setw(14) << "Tipe" << setw(12) << "Kapasitas"
          << "Harga/Malam" << "\n";
     cout << "  "; garis(LEBAR_LAYAR - 2);
@@ -757,7 +757,7 @@ Kamar* bacaKamarKosong() {
 // ============================================================
 void prosesCheckIn() {
     clearScreen();
-    judul("CHECK-IN TAMU");
+    judul("                     CHECK-IN TAMU");
 
     // 1) Validasi kapasitas DI AWAL, sebelum data apapun disentuh.
     if ((int) daftarTransaksi.size() >= SOFT_LIMIT_TRANSAKSI) {
