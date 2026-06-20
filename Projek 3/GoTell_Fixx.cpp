@@ -964,7 +964,7 @@ void menuResepsionis(User *user) {
     int pilihan;
 
     do {
-        pilihan = pilihMenuKotak("MENU RESEPSIONIS - " + user->nama, opsi, jumlahOpsi);
+        pilihan = pilihMenuKotak("                  MENU RESEPSIONIS - " + user->nama, opsi, jumlahOpsi);
 
         switch (pilihan) {
             case 0: prosesCheckIn();           tungguTombol(); break;
