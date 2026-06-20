@@ -118,7 +118,6 @@ string bacaTeks(const string &label, bool wajib = true) {
 string bacaTeksPanjang(const string &label, int panjangMin, int panjangMax) {
     string s;
     // [DIUBAH] Kalau panjangMin == panjangMax, tampilkan "(16 digit)" saja,
-    // bukan "(16-16 digit)" yang terlihat aneh.
     string keterangan = (panjangMin == panjangMax)
         ? (to_string(panjangMin) + " digit")
         : (to_string(panjangMin) + "-" + to_string(panjangMax) + " digit");
