@@ -1225,14 +1225,12 @@ void tampilkanPenutup() {
 
     cout << "\n";
 
+    //animasi keluar
     cout << BIRU << TEBAL;
-
     ketik("          Terima kasih telah menggunakan GoTell Hotel.\n", 50);
     this_thread::sleep_for(chrono::milliseconds(300));
-
     ketik("           Sampai jumpa kembali di sistem berikutnya.\n", 50);
     this_thread::sleep_for(chrono::milliseconds(300));
-
     cout << RESET;
 
     cout << "\n";
@@ -1240,8 +1238,6 @@ void tampilkanPenutup() {
     garis(LEBAR_LAYAR, '=');
 }
 
-// [BARU] Menu awal sebelum login: pilih "Login" atau "Keluar".
-// Pakai pilihMenuKotak yang sama dengan menu-menu lain supaya konsisten
 // (navigasi pakai tombol panah ATAS/BAWAH + ENTER lewat conio.h).
 int menuAwal() {
     string opsi[] = { "Login", "Keluar" };
@@ -1252,13 +1248,11 @@ int menuAwal() {
 int main() {
     system("chcp 65001 > nul");
 
-    // Data dibuat langsung dari kode, tanpa file txt.
     // Setiap program baru dijalankan, kamar kembali lengkap ke data default.
     inisialisasiDataAwal();
 
     bool lanjutProgram = true;
     while (lanjutProgram) {
-        // [BARU] Tampilkan menu awal dulu sebelum layar login.
         int pilihanAwal = menuAwal();
         if (pilihanAwal == 1) { // "Keluar" dipilih
             lanjutProgram = false;
@@ -1286,16 +1280,11 @@ int main() {
             menuHousekeeping(user);
         }
 
-        // Menu role selesai berarti user memilih Logout.
-        // Jadi animasi logout ditaruh di sini agar berlaku untuk semua role.
         clearScreen();
         tampilkanBanner();
         cout << KUNING << "\n  Logout dari akun " << user->username
              << " (" << user->role << ")" << RESET << "\n";
         animasiLoading("Mengakhiri sesi akun...");
-        // [DIUBAH] Tidak perlu lagi tanya "Login sebagai user lain? (y/n)"
-        // karena setelah logout, program otomatis kembali ke menuAwal()
-        // di awal perulangan while di atas.
         tungguTombol();
     }
     tampilkanPenutup();
