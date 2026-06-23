@@ -2,7 +2,6 @@
 #include <iomanip>    // Untuk setw, setfill, fixed, setprecision
 #include <ctime>      // Untuk mengambil tanggal sekarang
 #include <sstream>    // Untuk membuat format tanggal dengan ostringstream
-#include <cstdlib>    // Untuk system("cls"), system("chcp 65001 > nul"), exit(0)
 #include <thread>     // Untuk animasi loading
 #include <chrono>     // Untuk waktu delay animasi loading
 #include <conio.h>    // Untuk getch(), tombol panah, dan pause tanpa Enter
@@ -76,39 +75,18 @@ vector<Transaksi> daftarTransaksi;
 
 int idBerjalan = 1;
 
-void cekEOF() {
-    if (cin.eof()) {
-        cout << MERAH << "\n  Input berakhir tak terduga. Program dihentikan.\n" << RESET;
-        exit(0);
-    }
-}
-
-string trimTeks(const string &s) {
-    int awal = 0;
-    int akhir = (int) s.length() - 1;
-
-    while (awal <= akhir && (s[awal] == ' ' || s[awal] == '\t')) awal++;
-    while (akhir >= awal && (s[akhir] == ' ' || s[akhir] == '\t')) akhir--;
-
-    if (awal > akhir) return "";
-    return s.substr(awal, akhir - awal + 1);
-}
-
 string bacaTeks(const string &label, bool wajib = true) {
     string s;
     while (true) {
         cout << "  " << label << ": ";
         getline(cin, s);
-        cekEOF();
-
-        s = trimTeks(s);
-
 
         if (!wajib || !s.empty()) return s;
         cout << MERAH << "  Input tidak boleh kosong!" << RESET << "\n";
     }
 }
 
+//KTP
 string bacaTeksPanjang(const string &label, int panjangMin, int panjangMax) {
     string s;
     string keterangan = (panjangMin == panjangMax)
@@ -118,10 +96,6 @@ string bacaTeksPanjang(const string &label, int panjangMin, int panjangMax) {
     while (true) {
         cout << "  " << label << " (" << keterangan << "): ";
         getline(cin, s);
-        cekEOF();
-
-        s = trimTeks(s);
-
 
         if ((int) s.length() < panjangMin || (int) s.length() > panjangMax) {
             if (panjangMin == panjangMax) {
@@ -193,8 +167,8 @@ bool formatHPValid(const string &s) {
     if (!semuaAngka(s)) return false;
     if ((int) s.length() < 9 || (int) s.length() > 13) return false;
 
-    if (s.length() >= 2 && s.substr(0, 2) == "08") return true;
-    if (s.length() >= 2 && s.substr(0, 2) == "62") return true;
+    if (s.substr(0, 2) == "08") return true;
+    if (s.substr(0, 2) == "62") return true;
 
     return false;
 }
@@ -217,9 +191,6 @@ int bacaAngka(const string &label, int min = 0, int max = 999999) {
     while (true) {
         cout << "  " << label << ": ";
         getline(cin, input);
-        cekEOF();
-
-        input = trimTeks(input);
 
         if (!semuaAngka(input)) {
             cout << MERAH << "  Input harus berupa angka semua!" << RESET << "\n";
