@@ -1,41 +1,49 @@
-# 🏨 GoTell — Smart Hotel Management System
-
 <div align="center">
 
-<img src="assets/gotell-banner.svg" alt="GoTell Smart Hotel Management System Banner" width="100%"/>
+```
+       ██████╗  ██████╗ ████████╗███████╗██╗     ██╗
+      ██╔════╝ ██╔═══██╗╚══██╔══╝██╔════╝██║     ██║
+      ██║  ███╗██║   ██║   ██║   █████╗  ██║     ██║
+      ██║   ██║██║   ██║   ██║   ██╔══╝  ██║     ██║
+           ╚██████╔╝╚██████╔╝   ██║   ███████╗███████╗███████╗
+            ╚═════╝  ╚═════╝    ╚═╝   ╚══════╝╚══════╝╚══════╝
+```
 
-<br/><br/>
+### 🏨 Smart Hotel Management System
 
-![C++](https://img.shields.io/badge/Language-C++-00599C?style=for-the-badge&logo=cplusplus&logoColor=white)
-![Console App](https://img.shields.io/badge/Type-Console%20App-orange?style=for-the-badge)
-![Role Based](https://img.shields.io/badge/Login-Role%20Based-0ea5e9?style=for-the-badge)
-![Windows](https://img.shields.io/badge/Platform-Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)
-![Status](https://img.shields.io/badge/Status-Development-success?style=for-the-badge)
+<br/>
+
+[![C++](https://img.shields.io/badge/Language-C++-00599C?style=for-the-badge&logo=cplusplus&logoColor=white)](https://isocpp.org/)
+[![Console App](https://img.shields.io/badge/Type-Console%20App-F97316?style=for-the-badge&logo=windowsterminal&logoColor=white)]()
+[![Role Based](https://img.shields.io/badge/Login-Role%20Based-0EA5E9?style=for-the-badge&logo=shield&logoColor=white)]()
+[![Windows](https://img.shields.io/badge/Platform-Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)]()
+[![Status](https://img.shields.io/badge/Status-Development-22C55E?style=for-the-badge)]()
+
+<br/>
+
+> Aplikasi manajemen hotel berbasis **console/CLI** yang dibuat menggunakan **C++** murni.  
+> Mensimulasikan operasional hotel nyata dengan tiga role: **Manager**, **Resepsionis**, dan **Housekeeping**.
 
 </div>
-
-GoTell adalah aplikasi manajemen hotel berbasis **console/CLI** yang dibuat menggunakan **C++**. Program ini mensimulasikan operasional hotel dengan tiga role utama, yaitu **Manager**, **Resepsionis**, dan **Housekeeping**.
-
-Program sudah dilengkapi dengan **login berbasis role**, **menu interaktif menggunakan tombol panah**, **check-in/check-out tamu**, **layanan tambahan**, **struk transaksi**, **simulasi pembayaran QRIS**, **dashboard manager**, **laporan pendapatan**, **statistik okupansi**, serta **pengelolaan status kamar oleh housekeeping**.
-
-> Catatan penting: versi kode ini **tidak memakai file `.txt` atau database**. Semua data disimpan di memori selama program berjalan. Jika program ditutup lalu dijalankan ulang, data akan kembali ke data default dari kode.
 
 ---
 
 ## 📌 Daftar Isi
 
-- [Tentang Proyek](#-tentang-proyek)
-- [Fitur Utama](#-fitur-utama)
-- [Tampilan Program](#-tampilan-program)
-- [Konsep C++ yang Digunakan](#-konsep-c-yang-digunakan)
-- [Struktur Data yang Di-set di Program](#-struktur-data-yang-di-set-di-program)
-- [Alur Program](#-alur-program)
-- [Cara Menjalankan](#-cara-menjalankan)
-- [Library yang Digunakan](#-library-yang-digunakan)
-- [Rumus Perhitungan](#-rumus-perhitungan)
-- [Catatan Batasan Program](#-catatan-batasan-program)
-- [Pembagian Tugas Tim](#-pembagian-tugas-tim-7-anggota)
-- [Lisensi](#-lisensi)
+| # | Bagian |
+|---|--------|
+| 1 | [Tentang Proyek](#-tentang-proyek) |
+| 2 | [Fitur Utama](#-fitur-utama) |
+| 3 | [Tampilan Program](#️-tampilan-program) |
+| 4 | [Konsep C++ yang Digunakan](#-konsep-c-yang-digunakan) |
+| 5 | [Struktur Data yang Di-set di Program](#-struktur-data-yang-di-set-di-program) |
+| 6 | [Alur Program](#-alur-program) |
+| 7 | [Cara Menjalankan](#-cara-menjalankan) |
+| 8 | [Library yang Digunakan](#-library-yang-digunakan) |
+| 9 | [Rumus Perhitungan](#-rumus-perhitungan) |
+| 10 | [Catatan Batasan Program](#️-catatan-batasan-program) |
+| 11 | [Pembagian Tugas Tim](#-pembagian-tugas-tim-7-anggota) |
+| 12 | [Lisensi](#-lisensi) |
 
 ---
 
@@ -45,23 +53,27 @@ GoTell dibuat sebagai studi kasus penerapan konsep dasar pemrograman C++ dalam b
 
 Tampilan program dibuat lebih interaktif dengan beberapa elemen berikut:
 
-- Banner ASCII art **GoTell**
-- Warna teks menggunakan ANSI escape code
-- Menu berbentuk kotak
-- Navigasi menggunakan tombol **panah atas**, **panah bawah**, dan **Enter**
-- Animasi loading sederhana
-- Struk transaksi berbasis teks
-- Simulasi tampilan QRIS menggunakan karakter/simbol
-- Banner penutup saat program selesai
+- 🎨 Banner ASCII art **GoTell**
+- 🌈 Warna teks menggunakan ANSI escape code
+- 📦 Menu berbentuk kotak interaktif
+- ⌨️ Navigasi menggunakan tombol **panah atas**, **panah bawah**, dan **Enter**
+- ⏳ Animasi loading sederhana
+- 🧾 Struk transaksi berbasis teks
+- 💳 Simulasi tampilan QRIS menggunakan karakter/simbol
+- 🚪 Banner penutup saat program selesai
+
+> **📝 Catatan:** Versi kode ini **tidak memakai file `.txt` atau database**. Semua data disimpan di memori selama program berjalan. Jika program ditutup lalu dijalankan ulang, data akan kembali ke data default dari kode.
 
 ---
 
 ## ✨ Fitur Utama
 
-### 👔 Manager
+<details>
+<summary><b>👔 Manager</b></summary>
+<br/>
 
 | No | Fitur | Keterangan |
-|----|-------|------------|
+|:--:|-------|------------|
 | 1 | Dashboard Utama | Menampilkan total pendapatan, transaksi selesai, tingkat okupansi, dan status kamar |
 | 2 | Lihat Semua Kamar | Menampilkan seluruh kamar beserta tipe, lantai, harga, dan status |
 | 3 | Lihat Transaksi Aktif | Menampilkan transaksi yang masih berstatus aktif |
@@ -69,10 +81,14 @@ Tampilan program dibuat lebih interaktif dengan beberapa elemen berikut:
 | 5 | Statistik Okupansi | Menampilkan okupansi per tipe kamar dan total booking |
 | 6 | Logout | Keluar dari akun manager dan kembali ke menu awal |
 
-### 🧾 Resepsionis
+</details>
+
+<details>
+<summary><b>🧾 Resepsionis</b></summary>
+<br/>
 
 | No | Fitur | Keterangan |
-|----|-------|------------|
+|:--:|-------|------------|
 | 1 | Check-in Tamu | Memilih kamar kosong, input data tamu, membuat transaksi aktif |
 | 2 | Tambah Layanan ke Tamu | Menambahkan layanan tambahan ke transaksi aktif |
 | 3 | Check-out Tamu | Menampilkan struk, memilih pembayaran Tunai/QRIS, menyelesaikan transaksi |
@@ -80,27 +96,36 @@ Tampilan program dibuat lebih interaktif dengan beberapa elemen berikut:
 | 5 | Lihat Transaksi Aktif | Melihat transaksi yang sedang berjalan |
 | 6 | Logout | Keluar dari akun resepsionis dan kembali ke menu awal |
 
-### 🧹 Housekeeping
+</details>
+
+<details>
+<summary><b>🧹 Housekeeping</b></summary>
+<br/>
 
 | No | Fitur | Keterangan |
-|----|-------|------------|
+|:--:|-------|------------|
 | 1 | Lihat Semua Status Kamar | Menampilkan seluruh kamar dan statusnya |
 | 2 | Selesaikan Pembersihan Kamar | Mengubah kamar dari `Dibersihkan` menjadi `Kosong` |
 | 3 | Set Kamar ke Maintenance | Mengubah kamar menjadi `Maintenance` jika tidak sedang terisi |
 | 4 | Selesaikan Maintenance | Mengubah kamar dari `Maintenance` menjadi `Dibersihkan` |
 | 5 | Logout | Keluar dari akun housekeeping dan kembali ke menu awal |
 
-### 🔐 Validasi Input
+</details>
+
+<details>
+<summary><b>🔐 Validasi Input</b></summary>
+<br/>
 
 Program sudah menambahkan validasi agar input tidak mudah menyebabkan error:
 
 - Nama tamu hanya boleh huruf dan spasi
 - Nomor KTP wajib **16 digit angka**
 - Nomor HP wajib angka, panjang **9–13 digit**, dan diawali `08` atau `62`
-- Input angka tidak menerima teks seperti `1a`, `abc`, atau nilai kosong
+- Input angka tidak menerima teks seperti `1a`, `abc`, atau nilai kosong — parsing dilakukan manual karakter per karakter
 - Nomor kamar harus benar-benar ada dan berstatus `Kosong` saat check-in
 - Login dibatasi maksimal **3 kali percobaan**
-- Jika input berakhir tidak normal, program akan dihentikan dengan pesan error
+
+</details>
 
 ---
 
@@ -108,7 +133,9 @@ Program sudah menambahkan validasi agar input tidak mudah menyebabkan error:
 
 Bagian ini dapat diisi dengan screenshot asli hasil running program. Karena kode ini berbasis console, screenshot sebaiknya diambil langsung dari terminal/Command Prompt.
 
-Contoh struktur folder aset yang disarankan:
+<details>
+<summary><b>📂 Struktur folder aset yang disarankan</b></summary>
+<br/>
 
 ```text
 assets/
@@ -123,6 +150,8 @@ assets/
 ├── screenshot-menu-housekeeping.png
 └── screenshot-penutup.png
 ```
+
+</details>
 
 ### 🔐 Menu Awal & Login
 
@@ -165,27 +194,27 @@ assets/
 | Konsep | Penerapan dalam Program |
 |--------|--------------------------|
 | `struct` | Membuat model data `Kamar`, `Tamu`, `Layanan`, `Transaksi`, dan `User` |
-| `vector` | Menyimpan data dinamis seperti `daftarKamar`, `daftarUser`, `daftarTamu`, `daftarLayanan`, dan `daftarTransaksi` |
+| **Array statis + counter** | Menyimpan data utama seperti `daftarKamar[MAX_KAMAR]`, `daftarUser[MAX_USER]`, dll. dengan variabel counter `jumlahKamar`, `jumlahUser`, dll. |
 | Fungsi | Hampir seluruh proses dipisahkan menjadi fungsi agar kode lebih rapi dan modular |
 | Pointer | Fungsi pencarian seperti `cariKamar()` dan `cariTransaksiAktif()` mengembalikan alamat data agar data asli bisa langsung diubah |
 | Looping | Digunakan untuk menampilkan data, mencari data, validasi input, dan menjalankan menu |
 | Percabangan | Mengatur pilihan menu, role user, validasi status kamar, dan metode pembayaran |
 | String processing | Digunakan untuk validasi nama, KTP, nomor HP, format rupiah, dan format tanggal |
 | ANSI escape code | Digunakan untuk memberi warna pada output console |
-| Array sederhana | Masih digunakan untuk pilihan menu dan daftar tipe kamar, sedangkan data utama memakai `vector` |
+| **Parsing angka manual** | Konversi string ke integer dilakukan karakter per karakter tanpa `stoi()` untuk keamanan input |
 
 ---
 
 ## 🗂 Struktur Data yang Di-set di Program
 
-Semua data awal dibuat langsung dari kode melalui fungsi `inisialisasiDataAwal()`. Fungsi ini akan membersihkan data lama lalu mengisi kembali data default kamar, user, layanan, dan transaksi kosong.
+Semua data awal dibuat langsung dari kode melalui fungsi `inisialisasiDataAwal()`. Fungsi ini akan membersihkan data lama lalu mengisi kembali data default kamar, user, dan layanan.
 
 ### 🛏️ Daftar Kamar Default
 
-Total kamar default: **14 kamar**
+> Total kamar default: **14 kamar**
 
 | Nomor | Tipe | Lantai | Kapasitas | Harga/Malam |
-|-------|------|--------|-----------|-------------|
+|:-----:|------|:------:|:---------:|------------:|
 | 101 | Standard | 1 | 2 orang | Rp 450.000 |
 | 102 | Standard | 1 | 2 orang | Rp 450.000 |
 | 103 | Standard | 1 | 2 orang | Rp 450.000 |
@@ -203,22 +232,22 @@ Total kamar default: **14 kamar**
 
 ### 👤 Daftar Akun Default
 
-Total akun default: **5 user**
+> Total akun default: **5 user**
 
 | Username | Password | Nama | Role |
 |----------|----------|------|------|
-| `manager` | `manager123` | Iqbal ganteng | Manager |
-| `resep1` | `resep123` | Adji | Resepsionis |
-| `resep2` | `resep456` | zhyla | Resepsionis |
-| `hk1` | `hk123` | Nurra | Housekeeping |
-| `hk2` | `hk456` | Wira | Housekeeping |
+| `manager` | `manager123` | Iqbal ganteng | 👔 Manager |
+| `resep1` | `resep123` | Adji | 🧾 Resepsionis |
+| `resep2` | `resep456` | zhyla | 🧾 Resepsionis |
+| `hk1` | `hk123` | Nurra | 🧹 Housekeeping |
+| `hk2` | `hk456` | Wira | 🧹 Housekeeping |
 
 ### 🛎️ Daftar Layanan Default
 
-Total layanan default: **10 layanan**
+> Total layanan default: **10 layanan**
 
 | ID | Nama Layanan | Harga |
-|----|--------------|-------|
+|:--:|--------------|------:|
 | `FB-01` | Sarapan Pagi (Buffet) | Rp 85.000 |
 | `FB-02` | Room Service 24 Jam | Rp 50.000 |
 | `FB-03` | Makan Malam Romantis | Rp 350.000 |
@@ -232,15 +261,13 @@ Total layanan default: **10 layanan**
 
 ### 🚪 Status Kamar
 
-Status kamar yang digunakan dalam program:
-
-| Status | Arti |
-|--------|------|
-| `Kosong` | Kamar tersedia dan bisa dipilih saat check-in |
-| `Terisi` | Kamar sedang ditempati tamu |
-| `Dipesan` | Status disiapkan di program, tetapi belum ada fitur reservasi pada versi ini |
-| `Dibersihkan` | Kamar sudah check-out dan menunggu dibersihkan housekeeping |
-| `Maintenance` | Kamar sedang dalam perbaikan |
+| Status | Warna | Arti |
+|--------|:-----:|------|
+| `Kosong` | 🟢 | Kamar tersedia dan bisa dipilih saat check-in |
+| `Terisi` | 🔴 | Kamar sedang ditempati tamu |
+| `Dipesan` | 🟡 | Status disiapkan di program, belum ada fitur reservasi pada versi ini |
+| `Dibersihkan` | 🔵 | Kamar sudah check-out dan menunggu dibersihkan housekeeping |
+| `Maintenance` | 🟣 | Kamar sedang dalam perbaikan |
 
 ---
 
@@ -288,12 +315,14 @@ Tampilkan menu awal
       Selesai
 ```
 
-### Alur Check-in
+<details>
+<summary><b>📋 Alur Check-in</b></summary>
+<br/>
 
 ```text
 Check-in
   │
-  ├── Cek batas transaksi
+  ├── Cek batas transaksi (maks. 1000)
   ├── Tampilkan kamar kosong
   ├── Input nomor kamar
   ├── Validasi kamar harus ada dan statusnya Kosong
@@ -302,12 +331,16 @@ Check-in
   ├── Input nomor HP
   ├── Input lama menginap
   ├── Tambah data tamu jika belum pernah ada
-  ├── Buat transaksi aktif
+  ├── Buat transaksi aktif di array daftarTransaksi
   ├── Ubah status kamar menjadi Terisi
   └── Tampilkan pesan check-in berhasil
 ```
 
-### Alur Check-out
+</details>
+
+<details>
+<summary><b>📋 Alur Check-out</b></summary>
+<br/>
 
 ```text
 Check-out
@@ -324,7 +357,11 @@ Check-out
   └── Tampilkan struk akhir
 ```
 
-### Alur Housekeeping
+</details>
+
+<details>
+<summary><b>📋 Alur Housekeeping</b></summary>
+<br/>
 
 ```text
 Kamar selesai check-out
@@ -339,27 +376,21 @@ Housekeeping memilih "Selesaikan Pembersihan Kamar"
 Status kamar berubah menjadi Kosong
 ```
 
+</details>
+
 ---
 
 ## 🚀 Cara Menjalankan
 
-Program ini paling aman dijalankan di **Windows**, karena memakai:
-
-- `<conio.h>` untuk membaca tombol panah dan Enter
-- `system("cls")` untuk membersihkan layar
-- `system("chcp 65001 > nul")` untuk mengaktifkan karakter UTF-8 di console
+> ⚠️ Program ini paling aman dijalankan di **Windows**, karena memakai `<conio.h>` untuk tombol panah, `system("cls")` untuk clear screen, dan `system("chcp 65001")` untuk UTF-8.
 
 ### 1. Compile dengan MinGW/g++
 
-Jika nama file masih seperti file yang dikirim:
-
 ```bash
+# Jika nama file masih default:
 g++ -std=c++17 "Pasted code(72).cpp" -o GoTell.exe
-```
 
-Jika file sudah diubah namanya menjadi `GoTell.cpp`:
-
-```bash
+# Jika file sudah diubah namanya:
 g++ -std=c++17 GoTell.cpp -o GoTell.exe
 ```
 
@@ -376,70 +407,66 @@ GoTell.exe
 ## 📚 Library yang Digunakan
 
 | Library | Fungsi dalam Program | Status |
-|---------|----------------------|--------|
-| `<iostream>` | Input dan output utama seperti `cin`, `cout`, dan `getline` | Wajib |
-| `<iomanip>` | Merapikan tabel dan angka dengan `setw`, `setfill`, `fixed`, `setprecision` | Wajib |
-| `<string>` | Menggunakan tipe data `string` dan `to_string` | Wajib |
-| `<ctime>` | Mengambil tanggal sekarang untuk dashboard manager | Dipakai |
-| `<sstream>` | Membuat format tanggal dengan `ostringstream` | Dipakai |
-| `<cstdlib>` | Menjalankan `system("cls")`, `system("chcp 65001 > nul")`, dan `exit(0)` | Dipakai |
-| `<thread>` | Membuat animasi loading | Dipakai |
-| `<chrono>` | Mengatur jeda waktu animasi loading | Dipakai |
-| `<conio.h>` | Mengambil input tombol tanpa Enter memakai `getch()` | Wajib untuk Windows |
-| `<vector>` | Menyimpan data utama secara dinamis tanpa array fixed-size | Wajib |
+|---------|----------------------|:------:|
+| `<iostream>` | Input dan output utama seperti `cin`, `cout`, dan `getline` | ✅ Wajib |
+| `<iomanip>` | Merapikan tabel dan angka dengan `setw`, `setfill`, `fixed`, `setprecision` | ✅ Wajib |
+| `<string>` | Menggunakan tipe data `string` dan `to_string` | ✅ Wajib |
+| `<ctime>` | Mengambil tanggal sekarang untuk dashboard manager | 🔵 Dipakai |
+| `<sstream>` | Membuat format tanggal dengan `ostringstream` | 🔵 Dipakai |
+| `<cstdlib>` | Menjalankan `system("cls")` dan `system("chcp 65001 > nul")` | 🔵 Dipakai |
+| `<thread>` | Membuat animasi loading | 🔵 Dipakai |
+| `<chrono>` | Mengatur jeda waktu animasi loading | 🔵 Dipakai |
+| `<conio.h>` | Mengambil input tombol tanpa Enter memakai `getch()` | ⚠️ Windows only |
 
 ---
 
 ## 🧮 Rumus Perhitungan
 
-### Total Pembayaran
+### 💰 Total Pembayaran
 
 ```text
-biaya kamar = harga kamar per malam × lama menginap
-subtotal = biaya kamar + total layanan
-pajak = subtotal × 11%
-service charge = subtotal × 5%
-grand total = subtotal + pajak + service charge
+biaya kamar  = harga kamar per malam × lama menginap
+subtotal     = biaya kamar + total layanan
+pajak        = subtotal × 11%
+service      = subtotal × 5%
+grand total  = subtotal + pajak + service
 ```
 
 Dalam kode, pajak disimpan pada konstanta:
 
 ```cpp
-const double PAJAK = 0.11;
+const double PAJAK          = 0.11;
 const double SERVICE_CHARGE = 0.05;
 ```
 
-### Okupansi Kamar
+### 📊 Okupansi Kamar
 
 ```text
-okupansi = jumlah kamar berstatus Terisi / total kamar × 100%
+okupansi = (jumlah kamar berstatus Terisi / total kamar) × 100%
 ```
 
 Contoh:
 
 ```text
-Jika total kamar = 14
+Total kamar  = 14
 Kamar terisi = 3
 
-okupansi = 3 / 14 × 100%
-okupansi = 21,4%
+okupansi = 3 / 14 × 100% = 21.4%
 ```
 
-### Progress Bar Okupansi
+### 📈 Progress Bar Okupansi
 
-Progress bar dibuat dengan lebar 30 karakter.
+Progress bar dibuat dengan lebar **30 karakter**:
 
 ```text
-jumlah blok terisi = persen okupansi × lebar bar / 100
+jumlah blok = persen × lebar bar / 100  (dibulatkan ke terdekat)
 ```
-
-Kode juga melakukan pembulatan:
 
 ```cpp
 int isi = (int)((persen * lebarBar / 100.0) + 0.5);
 ```
 
-Artinya, jika hasilnya pecahan, jumlah blok akan dibulatkan ke angka terdekat. Jika okupansi lebih dari 0% tetapi hasil blok masih 0, program tetap menampilkan minimal 1 blok agar terlihat ada isi.
+> Jika okupansi > 0% tetapi hasil blok masih 0, program tetap menampilkan minimal **1 blok** agar terlihat ada isi.
 
 ---
 
@@ -447,66 +474,73 @@ Artinya, jika hasilnya pecahan, jumlah blok akan dibulatkan ke angka terdekat. J
 
 Versi kode ini sengaja dibuat tanpa file `.txt`, sehingga beberapa hal berikut perlu diperhatikan:
 
-- Data hanya tersimpan selama program masih berjalan.
-- Jika program ditutup, data kamar, tamu, layanan, transaksi, dan ID transaksi kembali ke default.
-- Program belum memiliki fitur penyimpanan permanen.
-- Program belum memiliki fitur reservasi kamar.
-- Program belum memiliki fitur pembatalan reservasi.
-- Program belum memiliki fitur upgrade/pindah kamar.
-- Program belum memiliki fitur mini bar terpisah.
-- Program belum memiliki fitur rating/feedback pelanggan.
-- Program belum memiliki fitur cetak ulang struk.
-- QRIS yang ditampilkan hanya simulasi simbol di console, bukan QRIS asli yang bisa discan untuk pembayaran nyata.
-- Status `Dipesan` sudah dikenali di tampilan status, tetapi belum ada proses menu yang mengubah kamar menjadi `Dipesan`.
+| # | Batasan |
+|:-:|---------|
+| 1 | Data hanya tersimpan selama program masih berjalan |
+| 2 | Jika program ditutup, semua data kembali ke default |
+| 3 | Kapasitas maksimum: **100 kamar**, **50 user**, **500 tamu**, **50 layanan**, **1.000 transaksi** |
+| 4 | Program belum memiliki fitur penyimpanan permanen |
+| 5 | Program belum memiliki fitur reservasi kamar |
+| 6 | Program belum memiliki fitur pembatalan reservasi |
+| 7 | Program belum memiliki fitur upgrade/pindah kamar |
+| 8 | Program belum memiliki fitur cetak ulang struk |
+| 9 | Status `Dipesan` sudah dikenali di tampilan, tetapi belum ada menu yang mengubah kamar ke status ini |
+| 10 | QRIS yang ditampilkan hanya simulasi simbol, bukan QRIS asli yang bisa discan |
 
 ---
 
 ## 👥 Pembagian Tugas Tim (7 Anggota)
 
-Pembagian tugas berikut disesuaikan dengan fungsi yang benar-benar ada pada kode saat ini. Jumlah akun login di program adalah **5 akun**, sedangkan pembagian tugas tetap dibuat untuk **7 anggota tim**.
+> Jumlah akun login di program adalah **5 akun**, sedangkan pembagian tugas dibuat untuk **7 anggota tim**.
 
-| # | Anggota | Modul / Tanggung Jawab | Fungsi/Bagian Terkait |
-|---|---------|--------------------------|-------------------------|
-| 1 | **Iqbal — Project Lead & Core System** | Menyusun pondasi utama program, model data, konstanta global, alur utama, inisialisasi data, dan penghubung antar-role. | `struct Kamar`, `struct Tamu`, `struct Layanan`, `struct Transaksi`, `struct User`, `vector daftarKamar`, `vector daftarUser`, `vector daftarTamu`, `vector daftarLayanan`, `vector daftarTransaksi`, `inisialisasiDataAwal()`, `menuAwal()`, `main()` |
-| 2 | **Zhyla — Input Validation & Utility** | Membuat fungsi input aman, validasi nama/KTP/nomor HP/angka, format rupiah, format tanggal, dan ID transaksi. | `cekEOF()`, `trimTeks()`, `bacaTeks()`, `bacaTeksPanjang()`, `semuaAngka()`, `bacaKTP()`, `namaValid()`, `bacaNamaTamu()`, `formatHPValid()`, `bacaNoHP()`, `bacaAngka()`, `formatRupiah()`, `tanggalSekarang()`, `buatID()` |
-| 3 | **Adji — UI Console & Navigasi Interaktif** | Membuat tampilan banner, garis/judul, menu kotak, navigasi tombol panah, animasi loading, dan tampilan penutup. | `clearScreen()`, `bacaTombolArah()`, `kotakMenu()`, `hitungLebarKotak()`, `pilihMenuKotak()`, `tungguTombol()`, `animasiLoading()`, `garis()`, `judul()`, `tampilkanBanner()`, `tampilkanPenutup()` |
-| 4 | **Nurra — Data Master & Pencarian Pointer** | Mengelola data default kamar, user, layanan, serta fungsi pencarian yang mengembalikan pointer ke data asli. | `tambahKamar()`, `inisialisasiKamarDefault()`, `tambahKamarDefaultJikaBelumAda()`, `pastikanKamarDefaultLengkap()`, `tambahUser()`, `inisialisasiUser()`, `tambahLayanan()`, `inisialisasiLayanan()`, `cariKamar()`, `cariUser()`, `cariTamuByKTP()`, `cariLayanan()`, `cariTransaksiAktif()`, `ambilOrTambahTamu()` |
-| 5 | **Wira — Modul Resepsionis & Transaksi** | Mengelola check-in, tambah layanan, check-out, perhitungan total, struk, pembayaran Tunai/QRIS, dan menu resepsionis. | `hitungTotalAkhir()`, `tampilkanKamarTersedia()`, `tampilkanLayanan()`, `cetakStruk()`, `tampilkanLogoQRIS()`, `tampilkanDataQRIS()`, `tampilkanQRISSimbol()`, `tampilkanHeaderQRIS()`, `bacaKamarKosong()`, `prosesCheckIn()`, `prosesTambahLayanan()`, `pilihMetodeBayar()`, `prosesCheckOut()`, `menuResepsionis()` |
-| 6 | **Sultan — Modul Housekeeping & Status Kamar** | Mengelola alur pembersihan kamar, maintenance, serta tampilan status kamar. | `warnaStatusKamar()`, `tampilkanSemuaKamar()`, `prosesBersihkanKamar()`, `prosesSetMaintenance()`, `prosesSelesaiMaintenance()`, `menuHousekeeping()` |
-| 7 | **Isam — Modul Manager, Dashboard & Statistik** | Membuat dashboard manager, transaksi aktif, laporan pendapatan, statistik okupansi, dan perhitungan ringkasan operasional hotel. | `tampilkanTransaksiAktif()`, `tampilkanBarOkupansi()`, `hitungKamarStatus()`, `hitungTransaksiSelesai()`, `hitungPendapatanSelesai()`, `tampilkanDashboard()`, `tampilkanLaporanPendapatan()`, `tampilkanOkupansi()`, `menuManager()` |
+| # | Anggota | Modul | Tanggung Jawab Utama |
+|:-:|---------|-------|----------------------|
+| 1 | **Iqbal** | Core System & Data Model | Struct, array global, konstanta, alur utama, inisialisasi data |
+| 2 | **Zhyla** | Input Validation & Utility | Validasi nama/KTP/HP/angka, format rupiah, format tanggal, ID transaksi |
+| 3 | **Adji** | UI Console & Navigasi | Banner, menu kotak, tombol panah, animasi loading, tampilan penutup |
+| 4 | **Nurra** | Data Master & Pencarian | Data default kamar/user/layanan, fungsi pencarian pointer |
+| 5 | **Wira** | Resepsionis & Transaksi | Check-in, check-out, layanan, struk, QRIS, menu resepsionis |
+| 6 | **Sultan** | Housekeeping & Status Kamar | Status kamar, pembersihan, maintenance, menu housekeeping |
+| 7 | **Isam** | Manager, Dashboard & Statistik | Dashboard, laporan pendapatan, statistik okupansi, login, menu manager |
 
-> Saran kerja tim: setiap anggota dapat membuat branch sesuai modulnya, misalnya `feature/resepsionis`, `feature/housekeeping`, `feature/manager`, lalu digabungkan ke branch utama setelah direview.
+---
 
-### 📂 Struktur File per Anggota
+<details>
+<summary><b>📂 Detail Fungsi per Anggota (klik untuk expand)</b></summary>
 
-Berikut ringkasan file/modul yang dikerjakan masing-masing anggota beserta daftar fungsi lengkapnya:
+<br/>
 
-#### 🟦 File 1 — Iqbal (Core System & Data Model)
-> Pondasi utama program: struct, vector, konstanta global, data global, dan inisialisasi awal.
+### 🟦 Iqbal — Core System & Data Model
+> Pondasi utama program: struct, array statis, konstanta global, dan inisialisasi awal.
 
 **Konstanta & Data Global:**
 ```cpp
 const int SOFT_LIMIT_TAMU      = 500;
 const int SOFT_LIMIT_TRANSAKSI = 1000;
+const int MAX_KAMAR            = 100;
+const int MAX_USER             = 50;
+const int MAX_TAMU             = 500;
+const int MAX_LAYANAN          = 50;
+const int MAX_TRANSAKSI        = 1000;
 const double PAJAK             = 0.11;
 const double SERVICE_CHARGE    = 0.05;
 
-vector<Kamar>     daftarKamar;
-vector<User>      daftarUser;
-vector<Tamu>      daftarTamu;
-vector<Layanan>   daftarLayanan;
-vector<Transaksi> daftarTransaksi;
-int idBerjalan = 1;
+Kamar     daftarKamar[MAX_KAMAR];
+User      daftarUser[MAX_USER];
+Tamu      daftarTamu[MAX_TAMU];
+Layanan   daftarLayanan[MAX_LAYANAN];
+Transaksi daftarTransaksi[MAX_TRANSAKSI];
+
+int jumlahKamar, jumlahUser, jumlahTamu, jumlahLayanan, jumlahTransaksi;
 ```
 
-**Struct yang didefinisikan:** `Kamar`, `Tamu`, `Layanan`, `Transaksi`, `User`
+**Struct:** `Kamar`, `Tamu`, `Layanan`, `Transaksi`, `User`
 
 **Fungsi:** `inisialisasiDataAwal()`, `menuAwal()`, `main()`
 
 ---
 
-#### 🟩 File 2 — Zhyla (Input Validation & Utility)
-> Seluruh fungsi validasi input dan utilitas format.
+### 🟩 Zhyla — Input Validation & Utility
 
 | Fungsi | Keterangan |
 |--------|------------|
@@ -518,15 +552,14 @@ int idBerjalan = 1;
 | `bacaNamaTamu(label)` | Membaca nama tamu dengan validasi |
 | `formatHPValid(s)` | Mengecek format nomor HP (diawali `08`/`62`, 9–13 digit) |
 | `bacaNoHP(label)` | Membaca nomor HP dengan validasi |
-| `bacaAngka(label, min, max)` | Membaca angka integer dalam rentang tertentu |
+| `bacaAngka(label, min, max)` | Membaca angka integer dengan parsing manual |
 | `formatRupiah(angka)` | Mengubah angka menjadi format `Rp xxx.xxx` |
 | `tanggalSekarang()` | Mengembalikan tanggal hari ini sebagai string |
 | `buatID(prefix)` | Membuat ID transaksi unik dengan prefix tertentu |
 
 ---
 
-#### 🟨 File 3 — Adji (UI Console & Navigasi Interaktif)
-> Semua fungsi tampilan, navigasi menu, dan animasi.
+### 🟨 Adji — UI Console & Navigasi Interaktif
 
 | Fungsi | Keterangan |
 |--------|------------|
@@ -544,30 +577,26 @@ int idBerjalan = 1;
 
 ---
 
-#### 🟪 File 4 — Nurra (Data Master & Pencarian Pointer)
-> Inisialisasi data default dan fungsi pencarian berbasis pointer.
+### 🟪 Nurra — Data Master & Pencarian Pointer
 
 | Fungsi | Keterangan |
 |--------|------------|
-| `tambahKamar(...)` | Menambahkan satu data kamar ke `daftarKamar` |
-| `inisialisasiKamarDefault()` | Mengisi 14 kamar default ke vector |
-| `tambahKamarDefaultJikaBelumAda()` | Menambahkan kamar default yang belum ada |
-| `pastikanKamarDefaultLengkap()` | Memastikan semua kamar default tersedia |
-| `tambahUser(...)` | Menambahkan satu akun user ke `daftarUser` |
-| `inisialisasiUser()` | Mengisi 5 akun default ke vector |
-| `tambahLayanan(...)` | Menambahkan satu layanan ke `daftarLayanan` |
-| `inisialisasiLayanan()` | Mengisi 10 layanan default ke vector |
+| `tambahKamar(...)` | Menambahkan satu data kamar ke array |
+| `inisialisasiKamarDefault()` | Mengisi 14 kamar default ke array |
+| `tambahUser(...)` | Menambahkan satu akun user ke array |
+| `inisialisasiUser()` | Mengisi 5 akun default ke array |
+| `tambahLayanan(...)` | Menambahkan satu layanan ke array |
+| `inisialisasiLayanan()` | Mengisi 10 layanan default ke array |
 | `cariKamar(nomor)` | Mencari kamar berdasarkan nomor, return pointer |
 | `cariUser(username)` | Mencari user berdasarkan username, return pointer |
 | `cariTamuByKTP(ktp)` | Mencari tamu berdasarkan KTP, return pointer |
 | `cariLayanan(id)` | Mencari layanan berdasarkan ID, return pointer |
 | `cariTransaksiAktif(nomorKamar)` | Mencari transaksi aktif berdasarkan nomor kamar, return pointer |
-| `ambilOrTambahTamu(nama, ktp, telp)` | Mengambil data tamu yang sudah ada atau menambahkan baru |
+| `ambilOrTambahTamu(nama, ktp, telp)` | Mengambil data tamu yang sudah ada atau menambahkan baru ke array |
 
 ---
 
-#### 🟥 File 5 — Wira (Resepsionis & Transaksi)
-> Seluruh alur check-in, check-out, layanan, struk, dan QRIS.
+### 🟥 Wira — Resepsionis & Transaksi
 
 | Fungsi | Keterangan |
 |--------|------------|
@@ -589,8 +618,7 @@ int idBerjalan = 1;
 
 ---
 
-#### 🟦 File 6 — Sultan (Housekeeping & Status Kamar)
-> Pengelolaan status kamar oleh tim housekeeping.
+### 🟦 Sultan — Housekeeping & Status Kamar
 
 | Fungsi | Keterangan |
 |--------|------------|
@@ -603,8 +631,7 @@ int idBerjalan = 1;
 
 ---
 
-#### 🟫 File 7 — Isam (Manager, Dashboard & Statistik)
-> Dashboard, laporan pendapatan, statistik okupansi, login, dan `main()`.
+### 🟫 Isam — Manager, Dashboard & Statistik
 
 | Fungsi | Keterangan |
 |--------|------------|
@@ -617,11 +644,10 @@ int idBerjalan = 1;
 | `tampilkanOkupansi()` | Menampilkan statistik okupansi per tipe kamar |
 | `menuManager(user)` | Menjalankan menu utama Manager |
 | `login()` | Menangani proses autentikasi user (maks. 3 percobaan) |
-| `menuAwal()` | Menampilkan menu awal (Login / Keluar) |
 
----
+</details>
 
-> Saran kerja tim: setiap anggota dapat membuat branch sesuai modulnya, misalnya `feature/resepsionis`, `feature/housekeeping`, `feature/manager`, lalu digabungkan ke branch utama setelah direview.
+> 💡 **Saran kerja tim:** setiap anggota dapat membuat branch sesuai modulnya, misalnya `feature/resepsionis`, `feature/housekeeping`, `feature/manager`, lalu digabungkan ke branch utama setelah direview.
 
 ---
 
@@ -629,9 +655,12 @@ int idBerjalan = 1;
 
 Proyek ini dibuat untuk keperluan tugas dan pembelajaran. Bebas digunakan serta dimodifikasi untuk kebutuhan edukasi.
 
+---
+
 <div align="center">
 
-**GoTell : Smart Hotel Management System**  
+**GoTell : Smart Hotel Management System**
+
 Made with ❤️ using C++
 
 </div>
